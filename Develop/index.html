@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
   <link rel="stylesheet" href="style.css" />
   <title>Work Day Scheduler</title>
 </head>
@@ -22,15 +23,21 @@
   <div class="container">
     <!-- Timeblocks go here -->
     <div class="row justify-content-center">
-      <div class="col-lg-1 border-top border-right text-right"> <span id="hour" class="">9am</span>
-      </div>
-      <div id="task-item" class="col-lg-8 bg-secondary text-white border">hello
-      </div>
-      <button id="save-button" class="col-lg-1 bg-info rounded right border"></button>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="/Develop/script.js"></script>
+      <div class="col-lg-1 col-md-1 border-top border-right text-right"> <span id="hour" class="font-weight-bold align-middle">9am</span></div>
+      <input data-store="1" id="task-item-1" class="col-lg-8 col-md-8 border align-middle"></input>
+      <button id="save-button" class="col-lg-1 col-md-2 bg-info rounded right border oi oi-lock-locked text-white"></button>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-1 col-md-1 border-top border-right text-right"> <span id="hour" class="font-weight-bold align-middle">9am</span></div>
+      <input data-store="2" id="task-item-2" class="col-lg-8 col-md-8 border align-middle"></input>
+      <button id="save-button" class="col-lg-1 col-md-2 bg-info rounded right border oi oi-lock-locked text-white"></button>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="/Develop/script.js"></script>
 </body>
 
 </html>

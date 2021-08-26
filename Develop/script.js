@@ -10,28 +10,31 @@ currentDateEl.appendChild(createHeaderDate)
 
 // body vars
 var currentTime = moment()
-var pastTime = moment().subtract(1, "seconds")
 
-var pastDue = function () {
-    if (pastTime) {
-        $("#task-item-1").addClass("bg-secondary text-white")
+var urgencyHandler = function () {
+    if (currentTime.hour() < moment().add(2, "hours")) {
+        $(".time-list-item").addClass("bg-secondary text-white")
     }
 }
 
-var soonDue = moment().format('dddd, MMMM Do');
-var upcoming = moment().format('dddd, MMMM Do');
+var currentDue = function () { }
 
-$(document).ready(function () {
-    $("*[data-store]").each(function () {
-        $(this).val(localStorage.getItem("item-" + $(this).attr("data-store")));
-    });
+var upcoming = function () { }
 
-    $("*[data-store]").on("keyup", function (itm) {
-        localStorage.setItem("item-" + $(this).attr("data-store"), $(this).val());
-    })
+
+$("#save-button-1").on("click", function (itm) {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-1").val());
 })
 
-pastDue()
+$("#save-button-2").on("click", function (itm) {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-2").val());
+})
+
+$("#task-item-1").val(localStorage.getItem("item-1"));
+$("#task-item-2").val(localStorage.getItem("item-2"));
+
+
+urgencyHandler()
 
 console.log(moment().add(2, "hours"))
 
@@ -58,5 +61,40 @@ console.log(moment().add(2, "hours"))
 
 // $("#save-button").on("click", function() {
 //  saveTasks()
+// })
+
+
+
+// split these into two functions // one to save on button click, second to load on page refresh
+// $(document).ready(function () {
+//     $("*[data-store]").each(function () {
+//         $(this).val(localStorage.getItem("item-" + $(this).attr("data-store")));
+//     });
+
+    // $("*[data-store]").on("keyup", function (itm) {
+    //     localStorage.setItem("item-" + $(this).attr("data-store"), $(this).val());
+    // })
+// })
+
+
+// $("[data-store]").on("click", function (itm) {
+//     localStorage.setItem("item-" + $("task-item-1").attr("data-store"), $("#task-item-1").val());
+// })
+
+
+// $("save-button-1").on("click", function (itm) {
+//     localStorage.setItem("item-" + $(this).attr("data-store"), $("task-item-1").val());
+// })
+
+// $("save-button-2").on("click", function (itm) {
+//     localStorage.setItem("item-" + $(this).attr("data-store"), $("task-item-2").val());
+// })
+
+
+// $(document).ready(function () {
+//     $("*[data-store]").each(function () {
+//         $("task-item-1").val(localStorage.getItem("task-item-1"));
+//         $("task-item-2").val(localStorage.getItem("item-" + $(this).attr("data-store")));
+//     });
 // })
 

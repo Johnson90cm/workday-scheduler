@@ -1,30 +1,76 @@
-// tasks
-var tasks = {}
-
-// header vars
+// header
 var currentDateEl = document.querySelector("#currentDay")
 var createHeaderDate = document.createElement("h2")
 var todaysDate = moment().format('dddd, MMMM Do');
-
-// header date
 createHeaderDate.innerHTML = todaysDate
 currentDateEl.appendChild(createHeaderDate)
 
-// body vars
+// body
 var currentTime = moment()
+var currentHour = moment().hour()
 var previousTime = moment().subtract(1, "seconds")
-var currentHour = moment().hour('07:00', 'HH:mm')
-var laterTime = moment("17:00", 'HH:mm');
+var laterTime = moment().add(1,"seconds");
 
 var urgencyHandler = function () {
     if (currentTime.isBefore(laterTime)) {
-        $(".time-list-item").addClass("bg-success text-white")
+        $("#17").addClass("future")
     } else if (currentTime.isAfter(previousTime)) {
-        $(".time-list-item").addClass("bg-secondary text-white")
-    } else if (currentHour) {
-        $(".time-list-item").addClass("bg-danger text-white")
+        $(".time-list-item").addClass("past")
+    } else  {
+        $(".time-list-item").addClass("present")
     }
 }
+
+// save buttons
+$("#save-button-1").on("click", function () {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#09").val());
+})
+$("#save-button-2").on("click", function () {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#10").val());
+})
+$("#save-button-3").on("click", function () {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#11").val());
+})
+$("#save-button-4").on("click", function () {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#12").val());
+})
+$("#save-button-5").on("click", function () {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#13").val());
+})
+$("#save-button-6").on("click", function () {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#14").val());
+})
+$("#save-button-7").on("click", function () {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#15").val());
+})
+$("#save-button-8").on("click", function () {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#16").val());
+})
+$("#save-button-9").on("click", function () {
+    localStorage.setItem("item-" + $(this).attr("data-store"), $("#17").val());
+})
+
+// task loads
+$("#09").val(localStorage.getItem("item-1"));
+$("#10").val(localStorage.getItem("item-2"));
+$("#11").val(localStorage.getItem("item-3"));
+$("#12").val(localStorage.getItem("item-4"));
+$("#13").val(localStorage.getItem("item-5"));
+$("#14").val(localStorage.getItem("item-6"));
+$("#15").val(localStorage.getItem("item-7"));
+$("#16").val(localStorage.getItem("item-8"));
+$("#17").val(localStorage.getItem("item-9"));
+
+urgencyHandler()
+
+console.log(moment())
+
+
+
+
+
+
+
 
 // var urgencyHandler = function () {
 //     if (moment().isAfter(moment().subtract(1, 'seconds'))) {
@@ -40,63 +86,6 @@ var urgencyHandler = function () {
 //         $(".time-list-item").addClass("bg-success text-white")
 //     }
 // }
-
-var currentDue = function () { }
-
-var upcoming = function () { }
-
-// save buttons
-$("#save-button-1").on("click", function () {
-    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-1").val());
-})
-$("#save-button-2").on("click", function () {
-    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-2").val());
-})
-$("#save-button-3").on("click", function () {
-    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-3").val());
-})
-$("#save-button-4").on("click", function () {
-    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-4").val());
-})
-$("#save-button-5").on("click", function () {
-    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-5").val());
-})
-$("#save-button-6").on("click", function () {
-    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-6").val());
-})
-$("#save-button-7").on("click", function () {
-    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-7").val());
-})
-$("#save-button-8").on("click", function () {
-    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-8").val());
-})
-$("#save-button-9").on("click", function () {
-    localStorage.setItem("item-" + $(this).attr("data-store"), $("#task-item-9").val());
-})
-
-// task loads
-$("#task-item-1").val(localStorage.getItem("item-1"));
-$("#task-item-2").val(localStorage.getItem("item-2"));
-$("#task-item-3").val(localStorage.getItem("item-3"));
-$("#task-item-4").val(localStorage.getItem("item-4"));
-$("#task-item-5").val(localStorage.getItem("item-5"));
-$("#task-item-6").val(localStorage.getItem("item-6"));
-$("#task-item-7").val(localStorage.getItem("item-7"));
-$("#task-item-8").val(localStorage.getItem("item-8"));
-$("#task-item-9").val(localStorage.getItem("item-9"));
-
-urgencyHandler()
-
-console.log(moment().add(2, "hours"))
-
-
-
-
-
-
-
-
-
 
 
 
@@ -129,23 +118,23 @@ console.log(moment().add(2, "hours"))
 
 
 // $("[data-store]").on("click", function (itm) {
-//     localStorage.setItem("item-" + $("task-item-1").attr("data-store"), $("#task-item-1").val());
+//     localStorage.setItem("item-" + $("09").attr("data-store"), $("#09").val());
 // })
 
 
 // $("save-button-1").on("click", function (itm) {
-//     localStorage.setItem("item-" + $(this).attr("data-store"), $("task-item-1").val());
+//     localStorage.setItem("item-" + $(this).attr("data-store"), $("09").val());
 // })
 
 // $("save-button-2").on("click", function (itm) {
-//     localStorage.setItem("item-" + $(this).attr("data-store"), $("task-item-2").val());
+//     localStorage.setItem("item-" + $(this).attr("data-store"), $("10").val());
 // })
 
 
 // $(document).ready(function () {
 //     $("*[data-store]").each(function () {
-//         $("task-item-1").val(localStorage.getItem("task-item-1"));
-//         $("task-item-2").val(localStorage.getItem("item-" + $(this).attr("data-store")));
+//         $("09").val(localStorage.getItem("09"));
+//         $("10").val(localStorage.getItem("item-" + $(this).attr("data-store")));
 //     });
 // })
 

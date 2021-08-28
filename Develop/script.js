@@ -6,19 +6,24 @@ createHeaderDate.innerHTML = todaysDate
 currentDateEl.appendChild(createHeaderDate)
 
 // body
-var currentTime = moment()
-var currentHour = moment().hour()
+var currentHour = moment().hour();
 var previousTime = moment().subtract(1, "seconds")
-var laterTime = moment().add(1,"seconds");
+var futureTime = moment().add(1, "seconds")
 
-var urgencyHandler = function () {
-    if (currentTime.isBefore(laterTime)) {
-        $("#17").addClass("future")
-    } else if (currentTime.isAfter(previousTime)) {
-        $(".time-list-item").addClass("past")
-    } else  {
-        $(".time-list-item").addClass("present")
-    }
+
+var timeHandler = function () {
+
+    $(".time-list-item").each(function () {
+        var elementHour = parseInt($(this).attr("id"));
+
+        if (elementHour < currentHour) {
+            $(this).removeClass(["present"], ["future"]).addClass("past")
+        } else if (elementHour === currentHour) {
+            $(this).removeClass(["past", "future"]).addClass("present");
+        } else {
+            $(this).removeClass(["past", "present"]).addClass("future");        
+        }
+    })
 }
 
 // save buttons
@@ -61,80 +66,6 @@ $("#15").val(localStorage.getItem("item-7"));
 $("#16").val(localStorage.getItem("item-8"));
 $("#17").val(localStorage.getItem("item-9"));
 
-urgencyHandler()
-
-console.log(moment())
 
 
-
-
-
-
-
-
-// var urgencyHandler = function () {
-//     if (moment().isAfter(moment().subtract(1, 'seconds'))) {
-//         $(".time-list-item").addClass("bg-secondary text-white")
-//     } else {
-//         $(".time-list-item").addClass("bg-success text-white")
-//     }
-// }
-
-// KEEP
-// var urgencyHandler = function () {
-//     if (currentTime.hour() < moment().add(2, "hours")) {
-//         $(".time-list-item").addClass("bg-success text-white")
-//     }
-// }
-
-
-
-  // body 
-// loadTasks = function () {
-//     tasks = JSON.parse(localStorage.getItem("tasks"))
-// }
-
-// saveTasks = function () {
-//     localStorage.setItem("tasks", JSON.stringify(tasks)) 
-//     alert("you saved your data")
-// }
-
-// $("#save-button").on("click", function() {
-//  saveTasks()
-// })
-
-
-
-// split these into two functions // one to save on button click, second to load on page refresh
-// $(document).ready(function () {
-//     $("*[data-store]").each(function () {
-//         $(this).val(localStorage.getItem("item-" + $(this).attr("data-store")));
-//     });
-
-    // $("*[data-store]").on("keyup", function (itm) {
-    //     localStorage.setItem("item-" + $(this).attr("data-store"), $(this).val());
-    // })
-// })
-
-
-// $("[data-store]").on("click", function (itm) {
-//     localStorage.setItem("item-" + $("09").attr("data-store"), $("#09").val());
-// })
-
-
-// $("save-button-1").on("click", function (itm) {
-//     localStorage.setItem("item-" + $(this).attr("data-store"), $("09").val());
-// })
-
-// $("save-button-2").on("click", function (itm) {
-//     localStorage.setItem("item-" + $(this).attr("data-store"), $("10").val());
-// })
-
-
-// $(document).ready(function () {
-//     $("*[data-store]").each(function () {
-//         $("09").val(localStorage.getItem("09"));
-//         $("10").val(localStorage.getItem("item-" + $(this).attr("data-store")));
-//     });
-// })
-
+timeHandler()

@@ -1,16 +1,16 @@
-// header
+// Header variables
 var currentDateEl = document.querySelector("#currentDay")
 var createHeaderDate = document.createElement("h2")
 var todaysDate = moment().format('dddd, MMMM Do');
 createHeaderDate.innerHTML = todaysDate
 currentDateEl.appendChild(createHeaderDate)
 
-// body
+// Body variables
 var currentHour = moment().hour();
 var previousTime = moment().subtract(1, "seconds")
 var futureTime = moment().add(1, "seconds")
 
-
+// Time color handler
 var timeHandler = function () {
 
     $(".time-list-item").each(function () {
@@ -26,7 +26,7 @@ var timeHandler = function () {
     })
 }
 
-// save buttons
+// Save buttons
 $("#save-button-1").on("click", function () {
     localStorage.setItem("item-" + $(this).attr("data-store"), $("#09").val());
 })
@@ -55,7 +55,7 @@ $("#save-button-9").on("click", function () {
     localStorage.setItem("item-" + $(this).attr("data-store"), $("#17").val());
 })
 
-// task loads
+// Load tasks
 $("#09").val(localStorage.getItem("item-1"));
 $("#10").val(localStorage.getItem("item-2"));
 $("#11").val(localStorage.getItem("item-3"));
@@ -65,7 +65,6 @@ $("#14").val(localStorage.getItem("item-6"));
 $("#15").val(localStorage.getItem("item-7"));
 $("#16").val(localStorage.getItem("item-8"));
 $("#17").val(localStorage.getItem("item-9"));
-
 
 
 timeHandler()

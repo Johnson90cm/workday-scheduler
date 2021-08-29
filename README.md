@@ -1,5 +1,11 @@
 # Work Day Scheduler Starter Code  
 
+## Description
+
+This application is a 9-5 workday task scheduler  
+  
+The application is created to help the user better plan their 9-5 work day. The user can save tasks by the hour and reload the page and they will persist. The user will have color indication to show weather the task is in the past, present, or future to better manage their tasks at a glance.
+
 ## User Story  
 
 AS AN employee with a busy schedule  
@@ -21,3 +27,8 @@ WHEN I click the save button for that time block
 THEN the text for that event is saved in local storage  
 WHEN I refresh the page  
 THEN the saved events persist  
+
+Screenshot: 
+![](./image.png)
+
+Working Url: https://johnson90cm.github.io/workday-scheduler/
